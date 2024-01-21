@@ -1,0 +1,9 @@
+rm *.o x* *.so;
+date;
+g++ -std=c++14 -c -fPIC mm_jki.cpp;
+g++ -std=c++14 -c -fPIC mm_kij.cpp;
+g++ -std=c++14 -c -fPIC saveVector.cpp;
+g++ -shared -o libhw3_p2.so mm_jki.o mm_kij.o saveVector.o;
+echo "built shared object library";
+g++ -std=c++14 -o xprob2 -I. hw3_p2.cpp -L. -lhw3_p2;
+echo "built program binary";

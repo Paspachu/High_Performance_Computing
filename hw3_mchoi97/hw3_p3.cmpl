@@ -1,0 +1,8 @@
+rm *.o x* *.so;
+date;
+g++ -std=c++14 -c -fPIC strassen.cpp;
+g++ -std=c++14 -c -fPIC saveVector.cpp;
+g++ -shared -o libhw3_p3.so strassen.o saveVector.o;
+echo "built shared object library";
+g++ -std=c++14 -o xprob3 -I. hw3_p3.cpp -L. -lhw3_p3;
+echo "built program binary";

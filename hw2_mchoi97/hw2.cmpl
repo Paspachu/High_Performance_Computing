@@ -1,0 +1,13 @@
+rm *.o x* *.so;
+date;
+g++ -std=c++14 -c -fPIC L1BLAS.cpp;
+g++ -std=c++14 -c -fPIC L2BLAS.cpp;
+g++ -std=c++14 -c -fPIC L3BLAS.cpp;
+g++ -std=c++14 -c -fPIC p1top4.cpp;
+g++ -std=c++14 -c -fPIC printNdVector.cpp;
+g++ -std=c++14 -c -fPIC testFunctions.cpp;
+g++ -std=c++14 -c -fPIC saveVector.cpp;
+g++ -shared -o librefBLAS.so L1BLAS.o L2BLAS.o L3BLAS.o p1top4.o printNdVector.o testFunctions.o saveVector.o;
+echo "built shared object library";
+g++ -std=c++14 -o xmain -O2 -I. main.cpp -L. -lrefBLAS;
+echo "built program binary";
